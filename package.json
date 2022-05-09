@@ -1,5 +1,5 @@
 {
-  "name": "noodly",
+  "name": "@fordi-org/noodly",
   "version": "0.1.0",
   "description": "A Functional State Machine (FSM) to act as a store for reactive applications.",
   "main": "src/index.mjs",
