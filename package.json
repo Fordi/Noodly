@@ -30,10 +30,76 @@
     "eslint": "^8.15.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.1.5",
     "jest": "^28.1.0"
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": [
+      "airbnb",
+      "plugin:jest/recommended"
+    ],
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": false,
+        "modules": true
+      },
+      "ecmaVersion": 2020
+    },
+    "plugins": [
+      "import"
+    ],
+    "rules": {
+      "no-param-reassign": "off",
+      "no-restricted-syntax": "off",
+      "import/extensions": [
+        "error",
+        "ignorePackages"
+      ],
+      "import/no-extraneous-dependencies": [
+        "warn",
+        {
+          "devDependencies": [
+            "build/*.mjs"
+          ]
+        }
+      ],
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "warn",
+            "error",
+            "info"
+          ]
+        }
+      ]
+    },
+    "settings": {}
+  },
   "jest": {
-    "testMatch": ["./**/*.test.mjs"],
-    "transform": {}
+    "testMatch": [
+      "./**/*.test.mjs"
+    ],
+    "transform": {},
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "./**/*.mjs"
+    ],
+    "coverageReporters": [
+      "text-summary",
+      "html"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 0,
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
+      }
+    }
   }
 }
