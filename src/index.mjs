@@ -2,9 +2,7 @@ const ACTION_TYPE = ({ async* test() { /* */ } }).test.constructor;
 
 const Noodly = (initialState, children = {}) => {
   let state = { ...initialState };
-  const kids = { ...children };
   let logging = false;
-  const actions = {};
   const listeners = {
     start: new Set(),
     complete: new Set(),
@@ -51,30 +49,23 @@ const Noodly = (initialState, children = {}) => {
       return action(fn[Object.keys(fn)[0]]);
     }
     if (!fn || !fn.name || fn.constructor !== ACTION_TYPE) {
-      console.warn('Actions MUST be of the form `async function* actionName() { ... }` or `{ async *actionName() { ... } }`');
+      throw new Error('Actions MUST be of the form `async function* actionName() { ... }` or `{ async *actionName() { ... } }`');
     }
-    actions[fn.name] = (...args) => {
+    return (...args) => {
       if (logging) console.info(`[${fn.name} start]`, state);
       announce('start', state, state);
       return act(fn(self, ...args), fn.name);
     };
-    return actions[fn.name];
   };
 
   const add = (name, child) => {
     child.parent = self;
-    kids[name] = machine;
-    Object.defineProperty(actions, name, {
-      enumerable: true,
-      configurable: true,
-      get: () => child.actions,
-    });
     state[name] = child.getState();
-    ['step', 'complete'].forEach((type) => {
-      child.listen(type, (newState, _, path) => {
+    Object.keys(listeners).forEach((signal) => {
+      child.listen(signal, (newState, _, __, path) => {
         const oldState = state;
         state[name] = newState;
-        announce(type, state, oldState, [name, ...path]);
+        announce(signal, state, oldState, [name, ...path]);
       });
     });
   };
@@ -144,7 +135,7 @@ const Noodly = (initialState, children = {}) => {
     setTools,
   });
 
-  Object.keys(kids).forEach((name) => add(name, kids[name]));
+  Object.keys(children).forEach((name) => add(name, children[name]));
 
   return self;
 };

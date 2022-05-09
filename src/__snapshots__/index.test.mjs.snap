@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Noodly allows signal subscription control 1`] = `
+Array [
+  Array [
+    Object {
+      "value": 0,
+    },
+    Object {
+      "value": 0,
+    },
+    "start",
+    Array [],
+  ],
+  Array [
+    Object {
+      "value": 1,
+    },
+    Object {
+      "value": 0,
+    },
+    "step",
+    Array [],
+  ],
+  Array [
+    Object {
+      "value": 2,
+    },
+    Object {
+      "value": 1,
+    },
+    "step",
+    Array [],
+  ],
+  Array [
+    Object {
+      "value": 2,
+    },
+    Object {
+      "value": 0,
+    },
+    "complete",
+    Array [],
+  ],
+]
+`;
+
+exports[`Noodly handle errors automatically, logging if logging is set 1`] = `[Error: failure]`;
+
+exports[`Noodly supports child machines 1`] = `
+Object {
+  "left": Object {
+    "left": false,
+  },
+  "right": Object {
+    "right": false,
+  },
+}
+`;
+
+exports[`Noodly supports child machines 2`] = `
+Array [
+  Array [
+    Object {
+      "left": Object {
+        "left": false,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    Object {
+      "left": Object {
+        "left": false,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    "start",
+    Array [
+      "left",
+    ],
+  ],
+  Array [
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    "step",
+    Array [
+      "left",
+    ],
+  ],
+  Array [
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    "complete",
+    Array [
+      "left",
+    ],
+  ],
+  Array [
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "right": false,
+      },
+    },
+    "start",
+    Array [
+      "right",
+    ],
+  ],
+  Array [
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "hasRun": true,
+      },
+    },
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "hasRun": true,
+      },
+    },
+    "step",
+    Array [
+      "right",
+    ],
+  ],
+  Array [
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "hasRun": true,
+      },
+    },
+    Object {
+      "left": Object {
+        "hasRun": true,
+      },
+      "right": Object {
+        "hasRun": true,
+      },
+    },
+    "complete",
+    Array [
+      "right",
+    ],
+  ],
+]
+`;
