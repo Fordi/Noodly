@@ -1,0 +1,39 @@
+{
+  "name": "noodly",
+  "version": "0.1.0",
+  "description": "A Functional State Machine (FSM) to act as a store for reactive applications.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github:Fordi/noodly"
+  },
+  "files": [
+    "src/index.js"
+  ],
+  "keywords": [
+    "state",
+    "store",
+    "functional",
+    "machine"
+  ],
+  "author": "Bryan Elliott <fordiman@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fordi/noodly/issues"
+  },
+  "homepage": "https://github.com/Fordi/noodly#readme",
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^28.1.0"
+  },
+  "jest": {
+    "testMatch": ["./**/*.test.mjs"],
+    "transform": {}
+  }
+}
