@@ -5,7 +5,10 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "watch": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --watchAll",
+    "lint": "eslint ./src/**/*.mjs",
+    "verify": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
