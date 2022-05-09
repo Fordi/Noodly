@@ -1,3 +1,5 @@
+// Disabling Jest on this line because this function will never be executed.
+/* istanbul ignore next */
 const ACTION_TYPE = ({ async* test() { /* */ } }).test.constructor;
 
 const Noodly = (initialState, children = {}) => {
@@ -80,22 +82,18 @@ const Noodly = (initialState, children = {}) => {
   };
   let warned = false;
 
-  const warnTools = () => {
-    console.warn([
-      'Your Noodly instance has not been initialized with the necessary reactive hooks; as a result, your app is not likely to work as expected.',
-      'Please call {instance}.setTools({ useEffect, useState }) immediately after you create your instance to correct this.',
-    ].join('\n'));
-    warned = true;
-  };
-
   const tools = {
     useState: (init) => {
-      if (!warned) warnTools();
-      return [init, () => {}];
+      if (!warned) {
+        console.warn([
+          'Your Noodly instance has not been initialized with the necessary reactive hooks; as a result, your app is not likely to work as expected.',
+          'Please call {instance}.setTools({ useEffect, useState }) immediately after you create your instance to correct this.',
+        ].join('\n'));
+        warned = true;
+      }
+      return [init, null];
     },
-    useEffect: () => {
-      if (!warned) warnTools();
-    },
+    useEffect: () => {},
   };
 
   const setTools = ({ useState, useEffect }) => (
@@ -107,6 +105,7 @@ const Noodly = (initialState, children = {}) => {
     tools.useEffect(() => listen('step', (newState, oldState) => {
       const gnu = selector(newState);
       const old = selector(oldState);
+      console.error({ gnu, old });
       if (gnu !== old) setValue(gnu);
     }), [selector]);
     return value;
@@ -125,7 +124,7 @@ const Noodly = (initialState, children = {}) => {
     listen,
   });
 
-  // Stuff you'll need for making actions
+  // Stuff you'll need for making actions / selectors
   Object.assign(self, machine, {
     machine,
     action,
