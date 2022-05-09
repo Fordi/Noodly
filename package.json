@@ -2,7 +2,7 @@
   "name": "noodly",
   "version": "0.1.0",
   "description": "A Functional State Machine (FSM) to act as a store for reactive applications.",
-  "main": "src/index.js",
+  "main": "src/index.mjs",
   "type": "module",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
