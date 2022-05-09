@@ -15,6 +15,7 @@
     "url": "github:Fordi/noodly"
   },
   "files": [
+    "README.md",
     "src/index.js"
   ],
   "keywords": [
