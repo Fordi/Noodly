@@ -5,8 +5,8 @@
   "main": "src/index.mjs",
   "type": "module",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
-    "watch": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --watchAll",
+    "test": "bash -c 'NODE_OPTIONS=--experimental-vm-modules jest --coverage'",
+    "watch": "bash -c 'NODE_OPTIONS=--experimental-vm-modules jest --coverage --watchAll'",
     "lint": "eslint ./src/**/*.mjs",
     "verify": "npm run lint && npm run test"
   },
